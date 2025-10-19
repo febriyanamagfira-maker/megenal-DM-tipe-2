@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiabeAdventure - Belajar Diabetes dengan Seru!</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e6f7ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+        
+        header {
+            background-color: #ffd1dc;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #ffd700;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        nav {
+            background-color: #d6eaf8;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ffd1dc;
+        }
+        
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        .character {
+            width: 150px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 50%;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            animation: fadeIn 0.5s;
+        }
+        
+        .button {
+            background-color: #85c1e9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #76b9e6;
+        }
+        
+        .quiz-container {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .sub-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d6eaf8;
+            border-radius: 10px;
+            animation: fadeIn 0.8s;
+        }
+        
+        .diagnosis-result {
+            animation: fadeIn 0.5s;
+        }
+        
+        .normal-result {
+            color: green;  /* Warna hijau untuk normal */
+        }
+        
+        .prediabetes-result {
+            color: orange;  /* Warna oranye untuk prediabetes */
+        }
+        
+        .diabetes-result {
+            color: red;  /* Warna merah untuk diabetes */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di DiabeAdventure!</h1>
+        <p>Halo, aku Dia, teman petualanganmu! 🌟 Biar aku jelaskan dulu: Diabetes tipe 2 adalah penyakit di mana tubuh kesulitan mengubah gula dari makanan menjadi energi, sehingga gula menumpuk di darah. Ini bisa membuat kita lelah atau sakit jika tidak dijaga, tapi kita bisa cegah dengan makan sehat dan olahraga! 😊</p>
+        <p>Bergabunglah dengan saya untuk belajar lebih seru tentang ini.</p>
+        <img src="https://via.placeholder.com/150?text=Dia+Character" alt="Karakter Dia" class="character">
+    </header>
+    
+    <nav>
+        <a href="#edukasi">Edukasi</a>
+        <a href="#game">Game</a>
+        <a href="#tips">Tips Sehat</a>
+    </nav>
+    
+    <div class="container" id="edukasi">
+        <h2>Edukasi tentang Diabetes Tipe 2</h2>
+        <p>Halo, aku Dia! Di sini, kita akan bahas lebih dalam tentang diabetes. Ayo pelajari penyebab, gejala, dan cara cegahnya agar kita bisa tetap sehat dan kuat! 💪</p>
+        
+        <div class="sub-section">
+            <h3>1. Apa Saja Penyebab Diabetes Tipe 2?</h3>
+            <p>Diabetes tipe 2 bisa terjadi karena beberapa alasan. Ini seperti petualangan buruk yang bisa kita hindari. Berikut penyebabnya:</p>
+            <ul>
+                <li>Makanan tidak sehat, seperti makanan manis atau junk food terlalu banyak. 🍔</li>
+                <li>Kurang olahraga, sehingga tubuh tidak kuat mengontrol gula. 🛑</li>
+                <li>Berat badan berlebih atau obesitas, yang membuat tubuh kesulitan. ⚖</li>
+                <li>Faktor keturunan, seperti jika keluarga punya riwayat diabetes. 👨‍👩‍👧</li>
+                <li>Umur yang lebih tua atau gaya hidup sibuk yang membuat kita lupa sehat. ⏳</li>
+            </ul>
+            <p>Aku Dia bilang: "Jika kita tahu penyebabnya, kita bisa lawan dengan pilihan sehat setiap hari!" 🌟</p>
+        </div>
+        
+        <div class="sub-section">
+            <h3>2. Apa Saja Gejala Diabetes Tipe 2?</h3>
+            <p>Gejala diabetes adalah tanda-tanda tubuh yang memberi tahu kita ada masalah. Kalau kamu merasakan ini, segera bicara dengan orang tua atau dokter, ya! Ini gejalanya:</p>
+            <ul>
+                <li>Sering buang air kecil, terutama malam hari. 🚽</li>
+                <li>Rasa haus yang berlebihan dan minum air lebih banyak. 💧</li>
+                <li>Rasa lelah atau capek terus-menerus, meskipun sudah istirahat. 😴</li>
+                <li>Nafsu makan meningkat, tapi berat badan malah turun. 🍽</li>
+                <li>Penglihatan kabur atau luka yang lama sembuh. 👀</li>
+            </ul>
+            <p>Dia di sini: "Gejala ini seperti alarm tubuh. Kalau muncul, jangan panik, tapi segera action untuk sehat!" 🚨</p>
+        </div>
+        
+        <div class="sub-section">
+            <h3>3. Bagaimana Cara Pencegahan Diabetes Tipe 2?</h3>
+            <p>Pencegahan adalah kunci untuk petualangan sehat! Kita bisa cegah diabetes dengan langkah sederhana. Ini caranya:</p>
+            <ul>
+                <li>Makan makanan sehat, seperti buah, sayur, dan protein rendah gula. 🥦</li>
+                <li>Olahraga rutin, minimal 30 menit sehari, seperti berlari atau bermain bola. 🏃‍♂</li>
+                <li>Jaga berat badan ideal dengan pola makan seimbang. ⚖</li>
+                <li>Periksa kesehatan secara rutin, seperti cek gula darah di dokter. 🩺</li>
+                <li>Hindari rokok dan minuman beralkohol, karena bisa memperburuk risiko. 🚭</li>
+            </ul>
+            <p>Aku Dia katakan: "Pencegahan itu seru seperti game! Kalau kita lakukan, tubuh kita jadi super hero! 🦸‍♀"</p>
+        </div>
+        
+        <button class="button" onclick="showModal()">Klik untuk Petualangan!</button>
+        
+        <div id="adventureModal" class="modal">
+            <h3>Yay! Petualangan Dimulai!</h3>
+            <p>Hebat! Kamu memulai petualangan bersama Dia. Mari lawan diabetes dengan makan sehat dan olahraga. Klik "Tutup" untuk lanjut. 🌟</p>
+            <button class="button" onclick="hideModal()">Tutup</button>
+        </div>
+    </div>
+    
+    <div class="container" id="game">
+        <h2>Game Quiz Seru!</h2>
+        <p>Halo, aku Dia! Sebelum main quiz, coba cek kadar gula darahmu dulu!</p>
+        
+        <div class="sub-section" id="blood-sugar-checker">
+            <h3>Cek Kadar Gula Darah (Simulasi)</h3>
+            <p>Ini adalah alat sederhana untuk simulasi. Masukkan kadar gula darah Anda (dalam mg/dL), lalu klik "Cek Sekarang". <strong>Catatan: Ini bukan diagnosis medis! Konsultasikan dengan dokter untuk hasil yang akurat.</strong></p>
+            <input type="number" id="blood-sugar-input" placeholder="Masukkan angka, contoh: 100" min="0">
+            <button class="button" onclick="checkBloodSugar()">Cek Sekarang</button>
+            <div id="diagnosis-result" class="diagnosis-result"></div>
+        </div>
+        
+        <p>Sekarang, mari main quiz dengan 10 pertanyaan tentang diabetes. Jawab sebanyak-banyaknya untuk dapat poin! 🎉</p>
+        <div id="quiz-container" class="quiz-container">
+            <div id="question"></div>
+            <div id="options"></div>
+            <button id="submit-button" class="button" onclick="submitAnswer()">Kirim Jawaban</button>
+            <div id="result"></div>
+            <div id="score-board"></div>
+        </div>
+    </div>
+    
+    <div class="container" id="tips">
+        <h2>Tips Sehat dari Dia</h2>
+        <p>1. Makan makanan sehat seperti apel dan sayur hijau. 🍎</p>
+        <p>2. Olahraga 30 menit sehari, seperti bersepeda atau bermain. 🚴</p>
+        <p>3. Minum air putih banyak untuk tubuhmu tetap kuat! 💧</p>
+        <img src="https://via.placeholder.com/200?text=Tips+Sehat" alt="Ilustrasi Tips" class="character">
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 DiabeAdventure. Belajar diabetes dengan senang!</p>
+    </footer>
+    
+    <script>
+        let questions = [
+            { question: "Apa yang bisa cegah diabetes?", options: ["Makan coklat", "Olahraga", "Tidur seharian"], answer: "Olahraga" },
+            { question: "Gejala diabetes yang umum adalah...", options: ["Sering haus", "Sakit kepala", "Demam"], answer: "Sering haus" },
+            { question: "Makanan apa yang baik untuk diabetes?", options: ["Makanan manis", "Sayur dan buah", "Minuman beralkohol"], answer: "Sayur dan buah" },
+            { question: "Berapa menit olahraga minimal sehari?", options: ["10 menit", "30 menit", "60 menit"], answer: "30 menit" },
+            { question: "Apa penyebab utama diabetes tipe 2?", options: ["Minum air", "Gaya hidup tidak sehat", "Tidur cukup"], answer: "Gaya hidup tidak sehat" },
+            { question: "Apa yang terjadi jika gula darah tinggi?", options: ["Tubuh lebih kuat", "Bisa membuat lelah", "Rambut panjang"], answer: "Bisa membuat lelah" },
+            { question: "Bagaimana cegah obesitas?", options: ["Makan berlebih", "Jaga berat badan", "Tidur siang"], answer: "Jaga berat badan" },
+            { question: "Apa manfaat olahraga untuk diabetes?", options: ["Membuat gula darah stabil", "Meningkatkan gula", "Tidak ada manfaat"], answer: "Membuat gula darah stabil" },
+            { question: "Keluarga punya riwayat diabetes, apa yang harus dilakukan?", options: ["Abaikan", "Periksa kesehatan rutin", "Makan sembarangan"], answer: "Periksa kesehatan rutin" },
+            { question: "Minum apa yang baik untuk tubuh?", options: ["Minuman manis", "Air putih", "Kopi hitam"], answer: "Air putih" }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        
+        function loadQuestion() {
+            if (currentQuestion < questions.length) {
+                const q = questions[currentQuestion];
+                document.getElementById('question').innerHTML = q.question;
+                const optionsDiv = document.getElementById('options');
+                optionsDiv.innerHTML = '';
+                q.options.forEach((option) => {
+                    const label = document.createElement('label');
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = 'quizAnswer';
+                    radio.value = option;
+                    label.appendChild(radio);
+                    label.appendChild(document.createTextNode(option));
+                    label.appendChild(document.createElement('br'));
+                    optionsDiv.appendChild(label);
+                });
+                document.getElementById('result').innerHTML = '';
+                document.getElementById('score-board').innerHTML = `Putaran: ${currentQuestion + 1}/10 | Skor: ${score}`;
+            } else {
+                document.getElementById('quiz-container').innerHTML = `<h3>Quiz Selesai! Skor akhir: ${score}/10. Hebat, kamu belajar banyak! 🎉 Ayo main lagi dengan Dia!</h3>`;
+            }
+        }
+        
+        function submitAnswer() {
+            const radios = document.getElementsByName('quizAnswer');
+            const selected = Array.from(radios).find(radio => radio.checked);
+            if (selected) {
+                if (selected.value === questions[currentQuestion].answer) {
+                    score++;
+                    document.getElementById('result').innerHTML = 'Benar! Kamu pintar! 😊';
+                } else {
+                    document.getElementById('result').innerHTML = 'Coba lagi! Jawaban benar adalah: ' + questions[currentQuestion].answer;
+                }
+                currentQuestion++;
+                setTimeout(loadQuestion, 2000);
+            } else {
+                alert('Pilih jawaban dulu, ya!');
+            }
+        }
+        
+        function checkBloodSugar() {
+            const input = document.getElementById('blood-sugar-input').value;
+            const level = parseFloat(input);
+            const resultDiv = document.getElementById('diagnosis-result');
+            
+            if (isNaN(level) || level < 0) {
+                resultDiv.innerHTML = '<p>Mohon masukkan angka yang valid dan positif!</p>';
+                return;
+            }
+            
+            let diagnosis = '';
+            let diagnosisClass = '';
+            if (level < 100) {
+                diagnosis = 'Kadar gula darah Anda normal (kurang dari 100 mg/dL). Ini berarti risiko diabetes rendah jika Anda menjaga gaya hidup sehat seperti makan seimbang dan olahraga.';
+                diagnosisClass = 'normal-result';
+            } else if (level >= 100 && level < 126) {
+                diagnosis = 'Ini mungkin prediabetes (100-125 mg/dL). Ini adalah tanda awal, dan Anda bisa mencegah diabetes dengan perubahan gaya hidup, seperti konsultasi dokter dan rutinkan olahraga.';
+                diagnosisClass = 'prediabetes-result';
+            } else if (level >= 126) {
+                diagnosis = 'Ini mungkin diabetes (126 mg/dL atau lebih). Segera konsultasikan dengan dokter untuk pemeriksaan lebih lanjut dan tips mengelola kondisi ini.';
+                diagnosisClass = 'diabetes-result';
+            }
+            resultDiv.innerHTML = `<p class="${diagnosisClass}">Diagnosis simulasi: ${diagnosis}</p>`;
+        }
+        
+        window.onload = loadQuestion;
+        
+        function showModal() {
+            document.getElementById('adventureModal').style.display = 'block';
+        }
+        
+        function hideModal() {
+            document.getElementById('adventureModal').style.display = 'none';
+        }
+        
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                const targetId = anchor.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
